@@ -35,13 +35,17 @@ menu['23']="Exit"
 while True:
     options=menu.keys()
     options.sort()
-        for entry in options:
-            print entry, menu[entry]
+    for entry in options:
+        print entry, menu[entry]
 
-        selection = input("Please select: ")
-        if selection =='1':
-            print("Input integer for A: ")
-            print("Input integer for A: ")
+    #has to be 'raw_input' in order to make selections 
+    selection = raw_input("Please select: ")
+    if selection =='1':
+        print("Input integer for A: ")
+        print("Input integer for A: ")
 
-        elif selection == '2':
-
+    elif selection == '23':
+        print("\nBYE")
+        break
+    else:
+        print("\nMust be a number on menu!\n")
