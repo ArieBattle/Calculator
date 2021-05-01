@@ -175,6 +175,12 @@ while True:
 
     elif selection =='15':
         A = float (input("Input integer for A: "))
+         reader = csv.reader(f)
+         data_as_list = list(reader)
+         #deter = np(data_as_list)
+
+
+         print np.linalg.det(data_as_list)
 
     elif selection == '16':
         B = float (input("input integer for B: "))
