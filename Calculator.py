@@ -3,13 +3,14 @@
 # PYTHON IMPLEMENTATION OF A CUSTOM MATRIX CALCULATOR
 # date: 05/14/2021
 # Student 1: Arielle Battle
-# Student 2: Janet Garcia
+# Student 2: Janneth Guarcas Garcia
 # Student 3: Javier Medina
-# Description: Implementation of a scientific calculator ..
+# Description: Implementation of a Matrix calculator in Python 2
 
 import csv
 import numpy as np
 
+print "\n#  Description"
 menu = {}
 menu['\n01']="ADD A and B: A + B"
 menu['02']="Subtract A from B: A - B"
@@ -21,8 +22,8 @@ menu['07']="Copy B into A: B to A"
 menu['08']="Swap A and B: A to B"
 menu['09']="Load matrix: Load A"
 menu['10']="Load matrix: Load B"
-menu['11']="Make A and square identify matrix up to oder 10x10: A to I"
-menu['12']="Make B and square identify matrix up to oder 10x10: B to I"
+menu['11']="Make A and square identify matrix up to order 10x10: A to I"
+menu['12']="Make B and square identify matrix up to order 10x10: B to I"
 menu['13']="Scalar n times A: nAwhere n is an integer"
 menu['14']="Scalar n times B: nA where n is an integer"
 menu['15']="Determine of A: det(A)"
@@ -95,45 +96,46 @@ while True:
         print entry, menu[entry]
 
     #has to be 'raw_input' in order to make selections for menu
-    selection = raw_input("\nEnter Choice: ")
-    if selection =='1':
-        A = float (input("Input integer for A: "))
-        B = float (input("input integer for B: "))
+    selection = raw_input("\nEnter Choice #: ")
+    if selection =='01':
+        A = int (input("Input integer for A: "))
+        B = int (input("input integer for B: "))
+        # print("A + B =" + str(A + B))
         print A, "+", B, "=", add(A, B)
 
-    elif selection == '2':
-        A = float (input("Input integer for A: "))
-        B = float (input("input integer for B: "))
+    elif selection == '02':
+        A = int (input("Input integer for A: "))
+        B = int (input("input integer for B: "))
         print A, ' - ', B, ' = ', subtractAB(A, B)
 
-    elif selection =='3':
-        A = float (input("Input integer for A: "))
-        B = float (input("input integer for B: "))
+    elif selection =='03':
+        A = int (input("Input integer for A: "))
+        B = int (input("input integer for B: "))
         print A, " - ", B, " = ", subtractBA(A, B)
 
-    elif selection == '4':
-        A = float (input("Input integer for A: "))
-        B = float (input("input integer for B: "))
+    elif selection == '04':
+        A = int (input("Input integer for A: "))
+        B = int (input("input integer for B: "))
         print B, " * ", A, " = ", multiplyAB(A, B)
 
-    elif selection =='5':
-        A = float (input("Input integer for A: "))
-        B = float (input("input integer for B: "))
+    elif selection =='05':
+        A = int (input("Input integer for A: "))
+        B = int (input("input integer for B: "))
         print B, " * ", A, " = ", multiplyBA(A, B)
 
-    elif selection == '6':
-        A = float (input("Input integer for A: "))
-        B = float (input("input integer for B: "))
+    elif selection == '06':
+        A = int (input("Input integer for A: "))
+        B = int (input("input integer for B: "))
         print "B = ", B, copyAintoB(A, B)
 
-    elif selection =='7':
-        A = float (input("Input integer for A: "))
-        B = float (input("input integer for B: "))
+    elif selection =='07':
+        A = int (input("Input integer for A: "))
+        B = int (input("input integer for B: "))
         print  copyBintoA(A, B),"A = ", A,
 
-    elif selection == '8':
-        A = float (input("Input integer for A: "))
-        B = float (input("input integer for B: "))
+    elif selection == '08':
+        A = int (input("Input integer for A: "))
+        B = int (input("input integer for B: "))
         print "\nBefore swap: A = ", A, " B = ", B
 
         temp = 0
@@ -147,7 +149,7 @@ while True:
 
         print "After Swapping: A = ", A, " B = ", B
 
-    elif selection =='9':
+    elif selection =='09':
         #this will open the file and read in the numbers
         with open('A.csv', 'rb') as f:
             reader = csv.reader(f)
@@ -156,53 +158,53 @@ while True:
 
     elif selection == '10':
         #this will open the file and read in the numbers
-        B = float (input("input integer for B: "))
+        B = int (input("input integer for B: "))
         with open('B.csv', 'rb') as f:
             reader = csv.reader(f)
             data_as_list = list(reader)
             print data_as_list
 
     elif selection =='11':
-        A = float (input("Input integer for A: "))
+        A = int (input("Input integer for A: "))
 
     elif selection == '12':
-        B = float (input("input integer for B: "))
+        B = int (input("input integer for B: "))
 
     elif selection =='13':
-        A = float (input("Input integer for A: "))
+        A = int (input("Input integer for A: "))
 
     elif selection == '14':
-        B = float (input("input integer for B: "))
+        B = int (input("input integer for B: "))
 
     elif selection =='15':
-        A = float (input("Input integer for A: "))
-         reader = csv.reader(f)
-         data_as_list = list(reader)
-         #deter = np(data_as_list)
+        A = int (input("Input integer for A: "))
+        reader = csv.reader(f)
+        data_as_list = list(reader)
+        #deter = np(data_as_list)
 
 
-         print np.linalg.det(data_as_list)
+        print np.linalg.det(data_as_list)
 
     elif selection == '16':
-        B = float (input("input integer for B: "))
+        B = int (input("input integer for B: "))
 
     elif selection =='17':
-        A = float (input("Input integer for A: "))
+        A = int (input("Input integer for A: "))
 
     elif selection == '18':
-        B = float (input("input integer for B: "))
+        B = int (input("input integer for B: "))
 
     elif selection == '19':
-        A = float (input("Input integer for A: "))
+        A = int (input("Input integer for A: "))
 
     elif selection =='20':
-        B = float (input("input integer for B: "))
+        B = int (input("input integer for B: "))
 
     elif selection == '21':
-        A = float (input("Input integer for A: "))
+        A = int (input("Input integer for A: "))
 
     elif selection =='22':
-        B = float (input("input integer for B: "))
+        B = int (input("input integer for B: "))
 
     elif selection == '23':
         print("\nExiting program")
