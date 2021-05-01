@@ -8,6 +8,7 @@
 # Description: Implementation of a scientific calculator ..
 
 import csv
+import numpy as np
 
 menu = {}
 menu['\n01']="ADD A and B: A + B"
