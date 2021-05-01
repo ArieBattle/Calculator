@@ -3,8 +3,8 @@
 # PYTHON IMPLEMENTATION OF A CUSTOM MATRIX CALCULATOR
 # date: 05/14/2021
 # Student 1: Arielle Battle
-# Student 2: 
-# Student 3: 
+# Student 2: Janet Garcia
+# Student 3: Javier Medina
 # Description: Implementation of a scientific calculator ..
 
 import csv
