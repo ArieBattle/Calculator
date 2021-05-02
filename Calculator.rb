@@ -7,7 +7,7 @@
 # Student 1: Arielle Battle
 # Student 2: Janneth Guarcas Garcia
 # Student 3: Javier I. Medina
-# Description: Implementation of a Matrix calculator in Ruby
+# Description: Implementation of a Matrix calculator in Ruby 5/1/221 time: 1921
 # #############################################################################
 
 require 'csv'
@@ -17,14 +17,18 @@ require 'csv'
 
 # unary operations per requirements
 
+# to load matrix A, takes no parameters, returns nothing
+# NOTES: * in-progress, may return the matrix at call
+#        * checks for square may be implemented as another function
+
 def load_A
-    matrix_A = CSV.parse(File.read("A.csv"), converters: :integer)
+    matrix = CSV.parse(File.read("A.csv"), converters: :integer)
     # case for load failure "try again"
 end
 
-
+# to load matrix B, takes no parameters, returns nothing
 def load_B
-    matrix_B = CSV.parse(File.read("B.csv"), converters: :integer)
+    matrix = CSV.parse(File.read("B.csv"), converters: :integer)
     # case for load failure "try again"
 end
 
@@ -42,6 +46,7 @@ end
 # scalar n times A: n * A where n is an integer, input N
 def scale_A(n)
     #code here
+    puts "Scaling Matrix A by n = #{n}"
 end
 
 # scalar n times B: n * B where n is an integer, input N
@@ -158,47 +163,75 @@ def is_square(matrix)
     # code here
 end
 
-# NOTE: 
+# NOTE: determine if is int, may be done by implicit function?
 
 # #############################################################################
 # variables (may move this section)
 
+
+
+# may add default matrix cases in case of matrix load/input failure
+
+
 # #############################################################################
 # main script
 
+user_input = "y"
 
-display_menu
+while user_input == "y" || user_input == "Y"
 
-     
+    display_menu
 
+    print "\nEnter choice selection number (1-23): "
+    selection = gets.chomp
 
-print "\nEnter choice selection number (1-23): "
-selection = gets
-# in progress testing
-case selection
-when String
-    puts "it's a string"
-when Fixnum
-    puts "it's a number"
-else
-    puts "is neither"
+    case selection
+    when '1'
+        matrix_A = load_A        
+        puts "it's a ONE, You have loaded Matrix A"
+    when '2'
+        puts "it's a TWO, you have loaded Matrix B"
+        matrix_B = load_B
+    when '3'
+        puts "it's a THREE, clarification required"
+    when '4'
+        puts "it's a FOUR, clarification required"
+    when '5'
+        # add check if matrices defined yet
+        puts "it's a FIVE."
+        print "Enter an integer to scale Matrix A: "
+        user_scale_A = gets.chomp.to_i
+        scale_A(user_scale_A)
+    when '6'
+        # add check if matrices defined yet
+        puts "it's a SIX."
+        print "Enter an integer to scale Matrix B: "
+        user_scale_B = gets.chomp.to_i
+        puts "Scaling Matrix A by n = #{user_scale_B}"
+    else
+        puts "NOT a valid choice, please try again."
+    end
+
+    # more for testing purposes
+    #load_A
+    #load_B
+
+    # sanity check
+
+    # load matrices A and B from current directory (for testing purposes)
+    # same commands as in functions 1 and 2 (keep for testing purposes)
+    #matrix_A = CSV.parse(File.read("A.csv"), converters: :integer, headers: false)
+    #matrix_B = CSV.parse(File.read("B.csv"), converters: :integer, headers: false)
+    puts "\nAction completed, do you have more operations to perform? (Y/N): "
+    user_input = gets.chomp
+
 end
-
-# sanity check
-matrix_A = CSV.parse(File.read("A.csv"), converters: :integer, headers: false)
-matrix_B = CSV.parse(File.read("B.csv"), converters: :integer, headers: false)
-
-puts "\n\nMatrices A and B loaded successfully."
+puts "\n\nMatrices A and B contents."
 puts "Matrix A:"
-# will print as singular col
 # puts matrix_A
 print matrix_A
 puts "\n"
-
 puts "\nMatrix B:\n"
-# will print as singular col
 # puts matrix_B
 print matrix_B
 puts "\n"
-
-
