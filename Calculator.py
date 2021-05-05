@@ -53,6 +53,15 @@ def loadingA(AFile):
         print (A)
 
 #file for loading a file for B.csv
+def loadingA(AFile):
+    with codecs.open(AFile, 'r', encoding="utf-8-seg") as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            for item in row:
+                A.append(int(item))
+        print (" ")
+        print ("A is loaded")
+        print (A)
 
 #function for add
 
@@ -62,7 +71,24 @@ def loadingA(AFile):
 #function for multiply BA
 #function for copying A into B
 #function for copying B into A
+
 #function for making A and square identify matrix up to oder 10x10: A to I
+def squareIdentityA(A):
+    global numpyForA
+        ANumpy = np.array(A) #converts listA into an np array
+        NoElem = len(ANumpy)
+        root = math.sqrt(NoElem)
+        if int(root + 0.5) ** 2 != NoElem or NoElem > 100:
+            print " "
+            print "File A can't be squared or is beyond the scope of a 10X10 matrix"
+            print "number of elements: ", NoElem
+        else:
+            size = int(root)
+            Aarray = np_array.reshape(size,size) #reshape matrix square dimensions
+            print " "
+            print "File A square identity matrix of ",np.shape(Aarray)# print A square matrix
+            print aAarray
+
 #function for making B and square identify matrix up to oder 10x10: A to I
 #function for scalar n times A
 #function for scalar n times B
@@ -131,9 +157,23 @@ while True:
     elif selection == '7':
         
     elif selection == '8':
-        
+        #opens file for A.csv
+        Afile = open("A.csv")
+        Afile_numpy = np.genfromtxt(Afile, delimeter = ",", skip_header = 1)
+
+        #this will copy and then print
+        result = np.concatenate(Afile, delimeter = ",", skip_header = 1)
+        print(result)
+
     elif selection == '9':
-       
+        #opens file fro B.csv
+        Bfile = open("B.csv")
+        Bfile_numpy = np.genfromtxt(Bfile, delimeter = ",", skip_header = 1)
+
+        #this will copy and then print
+        result = np.concatenate(Bfile, delimeter = ",", skip_header = 1)
+        print(result)
+
     elif selection == '10':
        
     elif selection == '11':
