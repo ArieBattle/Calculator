@@ -8,22 +8,25 @@
 # Description: Implementation of a Matrix calculator in Python 2
 
 import csv
+import sys
+import codecs
+import math
 import numpy as np
 
 menu = {}
-menu['\n01']="ADD A and B: A + B"
-menu['02']="Subtract A from B: A - B"
-menu['03']="Subtract B from A: B - A"
-menu['04']="Multiply A and B: AB"
-menu['05']="Multiply B and A: BA"
-menu['06']="Copy A into B: A to B"
-menu['07']="Copy B into A: B to A"
-menu['08']="Swap A and B: A to B"
-menu['09']="Load matrix: Load A"
-menu['10']="Load matrix: Load B"
+menu['\n01']="Load matrix: Load B"
+menu['02']="Load matrix: Load A"
+menu['03']="ADD A and B: A + B"
+menu['04']="Subtract A from B: A - B"
+menu['05']="Subtract B from A: B - A"
+menu['06']="Multiply A and B: AB"
+menu['07']="Multiply B and A: BA"
+menu['08']="Copy A into B: A to B"
+menu['09']="Copy B into A: B to A"
+menu['10']="Swap A and B: A to B"
 menu['11']="Make A and square identify matrix up to order 10x10: A to I"
 menu['12']="Make B and square identify matrix up to order 10x10: B to I"
-menu['13']="Scalar n times A: nAwhere n is an integer"
+menu['13']="Scalar n times A: nA where n is an integer"
 menu['14']="Scalar n times B: nA where n is an integer"
 menu['15']="Determine of A: det(A)"
 menu['16']="Determine of B: det(B)"
@@ -35,16 +38,24 @@ menu['21']="Integer power of A when A is a square matrix: A^n for 1 <= n <= 10"
 menu['22']="Integer power of B when B is a square matrix: B^n for 1 <= n <= 10"
 menu['23']="Exit"
 
-#file for opening a file for A.csv
-Afile = open("A.csv")
-Afile_numpy = np.gefromtxt(Afile, delimeter = ",", skip_header = 1)
+A = []
+B = []
 
-#file for opening a file for B.csv
-Bfile = open("A.csv")
-Bfile_numpy = np.gefromtxt(Afile, delimeter = ",", skip_header = 1)
+#file for loading a file for A.csv
+def loadingA(AFile):
+    with codecs.open(AFile, 'r', encoding="utf-8-seg") as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            for item in row:
+                A.append(int(item))
+        print (" ")
+        print ("A is loaded")
+        print (A)
+
+#file for loading a file for B.csv
 
 #function for add
- 
+
 #function for subtract A - B
 #function for subtract B - A
 #function for multiply AB
@@ -55,7 +66,7 @@ Bfile_numpy = np.gefromtxt(Afile, delimeter = ",", skip_header = 1)
 #function for making B and square identify matrix up to oder 10x10: A to I
 #function for scalar n times A
 #function for scalar n times B
-#function for det(A)
+#function for det(A) 
 #function for det(B)
 #function for transpose A
 #function for transpose B
@@ -72,57 +83,61 @@ while True:
     options.sort()
 
     for entry in options:
-        print entry, menu[entry]
+        print (entry, menu[entry])
 
     #has to be 'raw_input' in order to make selections for menu
     selection = raw_input("\nEnter Choice #: ")
     if selection =='1':
         result = np.sum(Afile_numpy, Bfile_numpy)
-        print result
+        print (result)
 
-    elif selection == '2':
-        result = np.subtract(Afile_numpy, Bfile_numpy)
-        print result
-
-    elif selection == '3':
-        result = np.subtract(Bfile_numpy, Afile_numpy)
-        print result
-
-    elif selection == '4':
-        result = np.dot(Afile_numpy, Bfile_numpy)
-        print result
-
-    elif selection == '5':
-        result = np.dot(Bfile_numpy, Afile_numpy)
-        print result
-
-    elif selection == '6':
-
-    elif selection == '7':
-
-    elif selection == '8':
-
-    elif selection == '9':
         #this will open the file and read in the numbers
         with open('A.csv', 'rb') as f:
             reader = csv.reader(f)
             data_as_list = list(reader)
-            print data_as_list
+            print (data_as_list)
 
-        print Afile_numpy
+        print (Afile_numpy)
 
-    elif selection == '10':
+    elif selection == '2':
+        result = np.subtract(Afile_numpy, Bfile_numpy)
+        print (result)
+
         #this will open the file and read in the numbers
         B = int (input("input integer for B: "))
         with open('B.csv', 'rb') as f:
             reader = csv.reader(f)
             data_as_list = list(reader)
-            print data_as_list
+            print (data_as_list)
 
-        print Bfile_numpy
+        print (Bfile_numpy)
 
+    elif selection == '3':
+        result = np.subtract(Bfile_numpy, Afile_numpy)
+        print (result)
+
+    elif selection == '4':
+        result = np.dot(Afile_numpy, Bfile_numpy)
+        print (result)
+
+    elif selection == '5':
+        result = np.dot(Bfile_numpy, Afile_numpy)
+        print (result)
+
+    elif selection == '6':
+        AFilecopy = np.matrix(Afile_numpy)
+        result = np.copy(AFilecopy)
+ 
+    elif selection == '7':
+        
+    elif selection == '8':
+        
+    elif selection == '9':
+       
+    elif selection == '10':
+       
     elif selection == '11':
-
+       
     elif selection == '12':
 
     elif selection == '13':
