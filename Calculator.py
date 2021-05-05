@@ -10,7 +10,6 @@
 import csv
 import numpy as np
 
-print "\n#  Description"
 menu = {}
 menu['\n01']="ADD A and B: A + B"
 menu['02']="Subtract A from B: A - B"
@@ -36,42 +35,22 @@ menu['21']="Integer power of A when A is a square matrix: A^n for 1 <= n <= 10"
 menu['22']="Integer power of B when B is a square matrix: B^n for 1 <= n <= 10"
 menu['23']="Exit"
 
+#file for opening a file for A.csv
+Afile = open("A.csv")
+Afile_numpy = np.gefromtxt(Afile, delimeter = ",", skip_header = 1)
+
+#file for opening a file for B.csv
+Bfile = open("A.csv")
+Bfile_numpy = np.gefromtxt(Afile, delimeter = ",", skip_header = 1)
+
 #function for add
-def add(A, B):
-    return A + B
-
+ 
 #function for subtract A - B
-def subtractAB(A, B):
-    return A - B
-
 #function for subtract B - A
-def subtractBA(A, B):
-    return B - A
-
 #function for multiply AB
-def multiplyAB(A, B):
-    return A * B
-
 #function for multiply BA
-def multiplyBA(A, B):
-    return B * A
-
-#function for copying A into B---------------------------
-#not sure if he wants us to keep the original number for B, same goes for the one below or use the copy funct for deep or shallow copy
-def copyAintoB(A, B):
-    temp = 0
-    temp = A
-    B = temp
-    return B
-
-#function for copying B int A---------------------------
-#same goes for this question
-def copyBintoA(A, B):
-    temp = 0
-    temp = B
-    A = temp
-    return A
-
+#function for copying A into B
+#function for copying B into A
 #function for making A and square identify matrix up to oder 10x10: A to I
 #function for making B and square identify matrix up to oder 10x10: A to I
 #function for scalar n times A
@@ -97,64 +76,36 @@ while True:
 
     #has to be 'raw_input' in order to make selections for menu
     selection = raw_input("\nEnter Choice #: ")
-    if selection =='01':
-        A = int (input("Input integer for A: "))
-        B = int (input("input integer for B: "))
-        # print("A + B =" + str(A + B))
-        print A, "+", B, "=", add(A, B)
+    if selection =='1':
+        result = np.sum(Afile_numpy, Bfile_numpy)
+        print result
 
-    elif selection == '02':
-        A = int (input("Input integer for A: "))
-        B = int (input("input integer for B: "))
-        print A, ' - ', B, ' = ', subtractAB(A, B)
+    elif selection == '2':
 
-    elif selection =='03':
-        A = int (input("Input integer for A: "))
-        B = int (input("input integer for B: "))
-        print A, " - ", B, " = ", subtractBA(A, B)
+    elif selection == '3':
+        
+    elif selection == '4':
+        result = np.dot(Afile_numpy, Bfile_numpy)
+        print result
 
-    elif selection == '04':
-        A = int (input("Input integer for A: "))
-        B = int (input("input integer for B: "))
-        print B, " * ", A, " = ", multiplyAB(A, B)
+    elif selection == '5':
+        result = np.dot(Bfile_numpy, Afile_numpy)
+        print result
 
-    elif selection =='05':
-        A = int (input("Input integer for A: "))
-        B = int (input("input integer for B: "))
-        print B, " * ", A, " = ", multiplyBA(A, B)
+    elif selection == '6':
 
-    elif selection == '06':
-        A = int (input("Input integer for A: "))
-        B = int (input("input integer for B: "))
-        print "B = ", B, copyAintoB(A, B)
+    elif selection == '7':
 
-    elif selection =='07':
-        A = int (input("Input integer for A: "))
-        B = int (input("input integer for B: "))
-        print  copyBintoA(A, B),"A = ", A,
+    elif selection == '8':
 
-    elif selection == '08':
-        A = int (input("Input integer for A: "))
-        B = int (input("input integer for B: "))
-        print "\nBefore swap: A = ", A, " B = ", B
-
-        temp = 0
-        temp2 = 0
-        temp = A
-        del A
-        temp2 = B
-        del B
-        A = temp2
-        B = temp
-
-        print "After Swapping: A = ", A, " B = ", B
-
-    elif selection =='09':
+    elif selection == '9':
         #this will open the file and read in the numbers
         with open('A.csv', 'rb') as f:
             reader = csv.reader(f)
             data_as_list = list(reader)
             print data_as_list
+
+        print Afile_numpy
 
     elif selection == '10':
         #this will open the file and read in the numbers
@@ -163,6 +114,8 @@ while True:
             reader = csv.reader(f)
             data_as_list = list(reader)
             print data_as_list
+
+        print Bfile_numpy
 
     elif selection =='11':
         A = int (input("Input integer for A: "))
@@ -177,13 +130,6 @@ while True:
         B = int (input("input integer for B: "))
 
     elif selection =='15':
-        A = int (input("Input integer for A: "))
-        reader = csv.reader(f)
-        data_as_list = list(reader)
-        #deter = np(data_as_list)
-
-
-        print np.linalg.det(data_as_list)
 
     elif selection == '16':
         B = int (input("input integer for B: "))
