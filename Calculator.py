@@ -81,9 +81,13 @@ while True:
         print result
 
     elif selection == '2':
+        result = np.subtract(Afile_numpy, Bfile_numpy)
+        print result
 
     elif selection == '3':
-        
+        result = np.subtract(Bfile_numpy, Afile_numpy)
+        print result
+
     elif selection == '4':
         result = np.dot(Afile_numpy, Bfile_numpy)
         print result
@@ -117,40 +121,29 @@ while True:
 
         print Bfile_numpy
 
-    elif selection =='11':
-        A = int (input("Input integer for A: "))
+    elif selection == '11':
 
     elif selection == '12':
-        B = int (input("input integer for B: "))
 
-    elif selection =='13':
-        A = int (input("Input integer for A: "))
+    elif selection == '13':
 
     elif selection == '14':
-        B = int (input("input integer for B: "))
 
-    elif selection =='15':
+    elif selection == '15':
 
     elif selection == '16':
-        B = int (input("input integer for B: "))
 
-    elif selection =='17':
-        A = int (input("Input integer for A: "))
+    elif selection == '17':
 
     elif selection == '18':
-        B = int (input("input integer for B: "))
 
     elif selection == '19':
-        A = int (input("Input integer for A: "))
 
-    elif selection =='20':
-        B = int (input("input integer for B: "))
+    elif selection == '20':
 
     elif selection == '21':
-        A = int (input("Input integer for A: "))
 
-    elif selection =='22':
-        B = int (input("input integer for B: "))
+    elif selection == '22':
 
     elif selection == '23':
         print("\nExiting program")
