@@ -19,18 +19,12 @@ require 'csv'
 
 # NOTES: 
 
-# menu option 1:  
-# funtion to load matrix A, takes no parameters, returns matrix
 def load_A
     matrix = CSV.parse(File.read("A.csv"), converters: :integer)
-    # case for load failure "try again"
 end
 
-# menu option 2: 
-# function to load matrix B, takes no parameters, returns matrix
 def load_B
     matrix = CSV.parse(File.read("B.csv"), converters: :integer)
-    # case for load failure "try again"
 end
 
 # MENU 3*** make A and square indentity matrix up to oder 10x10: A to I ***
@@ -43,8 +37,6 @@ def B_to_I
     #code here
 end
 
-# menu option 5: 
-# function to scalar n times A: n * A where n is an integer, input N
 def scale_A(n, matrix_A)
     row = matrix_A[0].length
     col = matrix_A.length
@@ -58,15 +50,13 @@ def scale_A(n, matrix_A)
         puts array
         array.each { |element|
             new_A[i][j] = element * n
-            j += 1
+            i += 1
         }
-        i += 1
+        j += 1
     }
     return new_A
 end
 
-# menu option 6: 
-# scalar n times B: n * B where n is an integer, input N
 def scale_B(n, matrix_B)
     row = matrix_B[0].length
     col = matrix_B.length
@@ -80,74 +70,59 @@ def scale_B(n, matrix_B)
         puts array
         array.each { |element|
             new_B[i][j] = element * n
-            j += 1
+            i += 1
         }
-        i += 1
+        j += 1
     }
     return new_B
 end
-# menu option 7
-# determinant of A: det(A) MAY NEED TO COMBO AS ONE
+
 def det_A(matrix_A)
-    # check if matrix is square/non-square
-    # rest of code
+
 end
 
-# menu option 8
-# determinant of B: det(B) MAY NEED TO COMBO AS ONE
+
 def det_B(matrix_B)
-    # check if matrix is square/non-square
-    # rest of code
+
 end
 
-# menu option 9
-# A transpose: AT
 def transpose_A(matrix_A)
     #
 end
 
-# menu option 10
-# B transpose: BT
+
 def transpose_B(matrix_B)
     #
 end
 
-# menu option 11
-# inverse of A: A-1
+
 def inverse_A(matrix_A)
     # check if matrix is square
     if is_square(matrix_A)
-        puts "you may continue in finding inverse for A"
+        puts " "
     else
-        puts "Matrix A is NOT a square\n"
-        puts "Please try another operation."
+        puts "\n"
+        puts " "
     end
 end
 
-# menu option 12
-# inverse of B: B-1
+
 def inverse_B(matrix_B)
-    # check if matrix is square
     if is_square(matrix_B)
-        puts "you may continue in finding inverse for B"
+        puts " "
     else
-        puts "Matrix B is NOT a square\n"
-        puts "Please try another operation."
+        puts " \n"
+        puts " "
     end
 end
 
-# menu option 13
-# integer power of A when A is an sqaure matrix: An for 1 ≤ n ≤ 10
+
 def power_A(matrix_A)
-    # check if matrix is square
-    # rest of code
+
 end
 
-# menu option 14
-# integer power of B when B is an sqaure matrix: Bn for 1 ≤ n ≤ 10 
 def power_B(matrix_B)
-    # check if matrix is square
-    # rest of code
+
 end
 
 # binary operations section
@@ -192,15 +167,12 @@ def swap_AB(matrix_A, matrix_B)
     #
 end
 
-# additional needed functions
-
 # display menu
 def display_menu
 
     puts "----------------------------------------------------------------\n" + 
         "\t\t\tMenu: Choose an option" + 
         "\n----------------------------------------------------------------"
-    # clarify 3 and 4 instructions with prof.
     puts "Choice\tDescription\n\n1\tLoad Matrix A\n2\tLoad Matrix B\n" +
         "3\tSet Custom Square Matrix A\n4\tSet Custom Square Matrix B\n" + 
         "3*\tMake A and square indentity(?) matrix up to order 10x10\n" + 
@@ -229,11 +201,7 @@ def check_continue
     return user_input
 end
 
-
-
-# determine if the matrix is a square
 def is_square(matrix)
-    puts "youre in the square checker"
     row = matrix[0].length
     col = matrix.length
     puts row
@@ -245,19 +213,11 @@ def is_square(matrix)
     end
 end
 
-# NOTE: determine if is int, may be done by implicit function?
-
 # #############################################################################
 # variables (may move this section)
 
 matrix_A = Array.new()
 matrix_B = Array.new()
-
-puts matrix_A
-puts "ABOVE ME"
-
-# may add default matrix cases in case of matrix load/input failure
-
 
 # #############################################################################
 # main script
@@ -265,11 +225,7 @@ puts "ABOVE ME"
 user_input = "y"
 
 while user_input == "y" || user_input == "Y"
-
-    # display meu
     display_menu
-
-    # obtain user operation choice, start of type checking code
     print "\nEnter choice selection number (1-23): "
     selection = gets.chomp
 
@@ -286,16 +242,15 @@ while user_input == "y" || user_input == "Y"
         puts "it's a FOUR, clarification required"
     when '5'
         if matrix_A.empty?
-            print "\nMatrix A is EMPTY! Please Load Matrix A!\n"
+            print "\n"
         else
             print "Enter an integer to scale Matrix A: "
             user_scale_A = gets.chomp.to_i
             matrix_A = scale_A(user_scale_A, matrix_A)
         end
     when '6'
-        # add check if matrices defined yet
         if matrix_B.empty?
-            print"\nMatrix B is EMPTY! Please Load Matrix B\n"
+            print "\n"
         else
             print "Enter an integer to scale Matrix B: "
             user_scale_B = gets.chomp.to_i
@@ -316,28 +271,14 @@ while user_input == "y" || user_input == "Y"
     else
         puts "NOT a valid choice, please try again."
     end
-
     user_input = check_continue
 end
 
-
-
-# sanity check zone
 puts "\n\nMatrices A and B contents."
 puts "Matrix A:"
-# will print as singular col
-# puts matrix_A
 print matrix_A
 puts "\n"
 
 puts "\nMatrix B:\n"
-# will print as singular col
-# puts matrix_B
 print matrix_B
 puts "\n"
-
-matrix_C = CSV.parse(File.read("C.csv"), converters: :integer)
-
-if is_square(matrix_C)
-    puts "C matrix is a square too"
-end
