@@ -81,7 +81,7 @@ def squareIdentityA(A):
         if int(root + 0.5) ** 2 != NoElem or NoElem > 100:
             print " "
             print "File A can't be squared or is beyond the scope of a 10X10 matrix"
-            print "number of elements: ", NoElem
+            print "Number of elements: ", NoElem
         else:
             size = int(root)
             Aarray = np_array.reshape(size,size) #reshape matrix square dimensions
@@ -90,6 +90,22 @@ def squareIdentityA(A):
             print aAarray
 
 #function for making B and square identify matrix up to oder 10x10: A to I
+def squareIdentityA(B):
+    global numpyForB
+        BNumpy = np.array(B) #converts listA into an np array
+        NoElem = len(BNumpy)
+        root = math.sqrt(NoElem)
+        if int(root + 0.5) ** 2 != NoElem or NoElem > 100:
+            print " "
+            print "File A can't be squared or is beyond the scope of a 10X10 matrix"
+            print "Number of elements: ", NoElem
+        else:
+            size = int(root)
+            Barray = np_array.reshape(size,size) #reshape matrix square dimensions
+            print " "
+            print "File A square identity matrix of ",np.shape(Barray)# print A square matrix
+            print BAarray
+
 #function for scalar n times A
 #function for scalar n times B
 #function for det(A) 
