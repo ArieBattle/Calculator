@@ -7,7 +7,7 @@
 # Student 1: Arielle Battle
 # Student 2: Janneth Guarcas Garcia
 # Student 3: Javier I. Medina
-# Description: Implementation of a Matrix calculator in Ruby 5/1/221 time: 1921
+# Description: Implementation of a Matrix calculator in Ruby 05082021
 # #############################################################################
 
 require 'csv'
@@ -17,86 +17,112 @@ require 'csv'
 
 # unary operations per requirements
 
-# to load matrix A, takes no parameters, returns nothing
-# NOTES: * in-progress, may return the matrix at call
-#        * checks for square may be implemented as another function
+# NOTES: 
 
 def load_A
     matrix = CSV.parse(File.read("A.csv"), converters: :integer)
-    # case for load failure "try again"
 end
 
-# to load matrix B, takes no parameters, returns nothing
 def load_B
     matrix = CSV.parse(File.read("B.csv"), converters: :integer)
-    # case for load failure "try again"
 end
 
-# *** make A and square indentity matrix up to oder 10x10: A to I ***
+# MENU 3*** make A and square indentity matrix up to oder 10x10: A to I ***
 def A_to_I
     #code here
 end
 
-# *** make B and square indentity matrix up to oder 10x10: A to I ***
+# MENU 4*** make B and square indentity matrix up to oder 10x10: A to I ***
 def B_to_I
     #code here
 end
 
-# Condense descs
-# scalar n times A: n * A where n is an integer, input N
-def scale_A(n)
-    #code here
+def scale_A(n, matrix_A)
+    row = matrix_A[0].length
+    col = matrix_A.length
+    new_A = Array.new(col){Array.new(row)}
+
     puts "Scaling Matrix A by n = #{n}"
+
+    i = 0
+    matrix_A.each { |array|
+        j = 0
+        puts array
+        array.each { |element|
+            new_A[i][j] = element * n
+            i += 1
+        }
+        j += 1
+    }
+    return new_A
 end
 
-# scalar n times B: n * B where n is an integer, input N
-def scale_B(n)
-    #code here
+def scale_B(n, matrix_B)
+    row = matrix_B[0].length
+    col = matrix_B.length
+    new_B = Array.new(col){Array.new(row)}
+
+    puts "Scaling Matrix A by n = #{n}"
+
+    i = 0
+    matrix_B.each { |array|
+        j = 0
+        puts array
+        array.each { |element|
+            new_B[i][j] = element * n
+            i += 1
+        }
+        j += 1
+    }
+    return new_B
 end
 
-# determinant of A: det(A) MAY NEED TO COMBO AS ONE
 def det_A(matrix_A)
-    # check if matrix is square/non-square
-    # rest of code
+
 end
 
-# determinant of B: det(B) MAY NEED TO COMBO AS ONE
+
 def det_B(matrix_B)
-    # check if matrix is square/non-square
-    # rest of code
+
 end
 
-# A transpose: AT
 def transpose_A(matrix_A)
     #
 end
 
-# B transpose: BT
+
 def transpose_B(matrix_B)
     #
 end
-# inverse of A: A-1
+
+
 def inverse_A(matrix_A)
     # check if matrix is square
-    # rest of code
+    if is_square(matrix_A)
+        puts " "
+    else
+        puts "\n"
+        puts " "
+    end
 end
 
-# inverse of B: B-1
+
 def inverse_B(matrix_B)
-    # check if matrix is square
-    # rest of code
+    if is_square(matrix_B)
+        puts " "
+    else
+        puts " \n"
+        puts " "
+    end
 end
 
-# integer power of A when A is an sqaure matrix: An for 1 ≤ n ≤ 10
+
 def power_A(matrix_A)
-    # check if matrix is square
-    # rest of code
+
 end
 
-# integer power of B when B is an sqaure matrix: Bn for 1 ≤ n ≤ 10 
 def power_B(matrix_B)
-    # check if matrix is square
-    # rest of code
+
 end
 
 # binary operations section
@@ -141,37 +167,57 @@ def swap_AB(matrix_A, matrix_B)
     #
 end
 
-# additional needed functions
-
 # display menu
 def display_menu
 
     puts "----------------------------------------------------------------\n" + 
         "\t\t\tMenu: Choose an option" + 
         "\n----------------------------------------------------------------"
-    # clarify 3 and 4 instructions with prof.
     puts "Choice\tDescription\n\n1\tLoad Matrix A\n2\tLoad Matrix B\n" +
         "3\tSet Custom Square Matrix A\n4\tSet Custom Square Matrix B\n" + 
         "3*\tMake A and square indentity(?) matrix up to order 10x10\n" + 
         "4*\tMake B and square indentity(?) matrix up to order 10x10\n" +
         "5\tScalar n times A\n6\tScalar n times B\n" +
-        "7\tDeterminant of A"
+        "7\tDeterminant of A\n" + "8\tDeterminant of B\n" +
+        "9\t\n" + "10\t\n" +
+        "11\tInverse of A: A^-1\n" + "12\tInverse of B: B^-1\n" + 
+        "13\t\n" +
+        "14\t\n"
+
 end
 
-# determine if the matrix is a square
+def check_continue
+    valid = false
+    while !valid
+        print "\nDo you have more operations to perform? (Y/N): "
+        cont = gets.chomp
+        if cont == "Y" || cont == "y" || cont == "N" || cont == "n"
+            user_input = cont
+            valid = true
+        else
+            puts "Invalid choice. Try again"
+        end
+    end
+    return user_input
+end
+
 def is_square(matrix)
-    # code here
+    row = matrix[0].length
+    col = matrix.length
+    puts row
+    puts col
+    if row == col
+        perfect_square = true
+    else
+        perfect_square = false
+    end
 end
-
-# NOTE: determine if is int, may be done by implicit function?
 
 # #############################################################################
 # variables (may move this section)
 
-
-
-# may add default matrix cases in case of matrix load/input failure
-
+matrix_A = Array.new()
+matrix_B = Array.new()
 
 # #############################################################################
 # main script
@@ -179,59 +225,60 @@ end
 user_input = "y"
 
 while user_input == "y" || user_input == "Y"
-
     display_menu
-
     print "\nEnter choice selection number (1-23): "
     selection = gets.chomp
 
     case selection
     when '1'
         matrix_A = load_A        
-        puts "it's a ONE, You have loaded Matrix A"
+        puts "\nYou have loaded Matrix A."
     when '2'
-        puts "it's a TWO, you have loaded Matrix B"
-        matrix_B = load_B
+        matrix_B = load_B        
+        puts "\nYou have loaded Matrix B"
     when '3'
         puts "it's a THREE, clarification required"
     when '4'
         puts "it's a FOUR, clarification required"
     when '5'
-        # add check if matrices defined yet
-        puts "it's a FIVE."
-        print "Enter an integer to scale Matrix A: "
-        user_scale_A = gets.chomp.to_i
-        scale_A(user_scale_A)
+        if matrix_A.empty?
+            print "\n"
+        else
+            print "Enter an integer to scale Matrix A: "
+            user_scale_A = gets.chomp.to_i
+            matrix_A = scale_A(user_scale_A, matrix_A)
+        end
     when '6'
-        # add check if matrices defined yet
-        puts "it's a SIX."
-        print "Enter an integer to scale Matrix B: "
-        user_scale_B = gets.chomp.to_i
-        puts "Scaling Matrix A by n = #{user_scale_B}"
+        if matrix_B.empty?
+            print "\n"
+        else
+            print "Enter an integer to scale Matrix B: "
+            user_scale_B = gets.chomp.to_i
+            matrix_B = scale_B(user_scale_B, matrix_B)
+        end
+    when '11'
+        if matrix_A.empty?
+            print"\nMatrix A is EMPTY! Please Load Matrix B\n"
+        else
+            inverse_A(matrix_A)
+        end
+    when '12'
+        if matrix_B.empty?
+            print"\nMatrix B is EMPTY! Please Load Matrix B\n"
+        else
+            inverse_B(matrix_B)
+        end
     else
         puts "NOT a valid choice, please try again."
     end
-
-    # more for testing purposes
-    #load_A
-    #load_B
-
-    # sanity check
-
-    # load matrices A and B from current directory (for testing purposes)
-    # same commands as in functions 1 and 2 (keep for testing purposes)
-    #matrix_A = CSV.parse(File.read("A.csv"), converters: :integer, headers: false)
-    #matrix_B = CSV.parse(File.read("B.csv"), converters: :integer, headers: false)
-    puts "\nAction completed, do you have more operations to perform? (Y/N): "
-    user_input = gets.chomp
-
+    user_input = check_continue
 end
+
 puts "\n\nMatrices A and B contents."
 puts "Matrix A:"
-# puts matrix_A
 print matrix_A
 puts "\n"
+
 puts "\nMatrix B:\n"
-# puts matrix_B
 print matrix_B
 puts "\n"
