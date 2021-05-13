@@ -257,7 +257,7 @@ selection = 99 #Base case
 
 while selection != 0:
 
-    selection = int(input("\nEnter choice 1-22 (24 to see menu or 0 to exit): "))
+    selection = int(input("\nEnter choice 1-23 (24 to see menu or 0 to exit): "))
     
     if selection == 1:
         print("A: \n")
@@ -395,5 +395,12 @@ while selection != 0:
     elif selection == 24:
         getMenu()
 
+    elif selection < 0:
+        print("\nPLEASE ENTER A VALID INPUT")
+        getMenu()
+    
+    elif selection > 23:
+        print("\nPLEASE INPUT A VALID INPUT")
+        getMenu()
 
 
