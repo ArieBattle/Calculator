@@ -1,11 +1,54 @@
+<!DOCTYPE html>
 <?php
-echo "Python MAtrix Calculator <br><br>"
+//displays all errors or warnings
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 
-$command = escapeshellcmd('python Calculator/pyMatrix.py 2>&1');
+
+<html lang="en">
+<div class="wrapper">
+<head>
+
+<meta charset="UTF-8">
+<link  rel="stylesheet" type="text/css" href="style.css?version=51">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="pyMatrix.py"></script>
+<title>Python Calculator</title>
+
+</head>
+
+<body>
+
+<div class="menu">
+
+<h1>Python Matrix Calculator</h1>
+<form action="pyMatrix.py" method="post">
+<div class="InsideMenu">
+
+<?php
+$command = escapeshellcmd('python pyMatrix.py 2>&1');
 
 $output = system($command);
 
-echo $output;
-
-//system("python pyMatrix.py ".$_POST["name"]);
+print($output);
 ?>
+
+</div>
+<!--this will get user input from html-->
+<br>
+
+<input type="text" id="select" name="selection"><br><br> 
+<input type="submit">
+
+<?php
+echo $_POST["selection"];
+
+?>
+</form>
+</div>
+</body>
+</div>
+</html>

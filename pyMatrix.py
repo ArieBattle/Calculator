@@ -5,14 +5,12 @@ CLASS PROJECT
 COURSE: CMPS3500
 STUDENTS:
     Arielle Battle
-    Janneth Guarcas Garcia
     Javier Medina
 DESC: Implementation of Matrix calculator using Python
 '''
 
 import csv
 import numpy as np
-
 
 def getMenu():
     print("1. View Matrix A")
@@ -252,7 +250,9 @@ getMenu()
 matrixA = load_in_A()
 matrixB = load_in_B()
 
-selection = 99 #Base case
+#this will get the data entered from html page
+selection = form.getvalue('select')
+#selection = 99 #Base case
 
 
 while selection != 0:
