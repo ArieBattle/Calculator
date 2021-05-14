@@ -11,6 +11,7 @@ DESC: Implementation of Matrix calculator using Python
 
 import csv
 import numpy as np
+import cgi
 
 def getMenu():
     print("1. View Matrix A")
@@ -251,7 +252,7 @@ matrixA = load_in_A()
 matrixB = load_in_B()
 
 #this will get the data entered from html page
-selection = form.getvalue('select')
+selection = request.GET['select']
 #selection = 99 #Base case
 
 

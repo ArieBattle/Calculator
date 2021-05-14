@@ -41,7 +41,7 @@ print($output);
 <br>
 
 <input type="text" id="select" name="selection"><br><br> 
-<input type="submit">
+<input type="submit" name="submit" value="submit">
 
 <?php
 echo $_POST["selection"];
