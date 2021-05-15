@@ -252,8 +252,8 @@ matrixA = load_in_A()
 matrixB = load_in_B()
 
 #this will get the data entered from html page
-selection = request.GET['select']
-#selection = 99 #Base case
+#selection = request.GET['select']
+selection = 99 #Base case
 
 
 while selection != 0:

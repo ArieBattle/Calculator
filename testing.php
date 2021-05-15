@@ -25,7 +25,7 @@ error_reporting(E_ALL);
 <div class="menu">
 
 <h1>Python Matrix Calculator</h1>
-<form action="pyMatrix.py" method="post">
+<form action="pyMatrix.py" method="POST">
 <div class="InsideMenu">
 
 <?php
@@ -34,6 +34,7 @@ $command = escapeshellcmd('python pyMatrix.py 2>&1');
 $output = system($command);
 
 print($output);
+
 ?>
 
 </div>
@@ -44,7 +45,7 @@ print($output);
 <input type="submit" name="submit" value="submit">
 
 <?php
-echo $_POST["selection"];
+echo $_GET["selection"];
 
 ?>
 </form>
